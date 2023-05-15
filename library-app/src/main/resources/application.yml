@@ -1,6 +1,0 @@
-srping:
-  datasource:
-    url: "jdbc:mysql://localhost/library"
-    username: "root"
-    password: "root"
-    driver-class-name: com.mysql.cj.jdbc.Driver
