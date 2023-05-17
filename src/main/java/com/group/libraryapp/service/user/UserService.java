@@ -1,20 +1,24 @@
 package com.group.libraryapp.service.user;
 
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
+import com.group.libraryapp.repository.user.UserRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class UserService {
 
-    public void updateUser(JdbcTemplate jdbcTemplate, UserUpdateRequest request) {
-        String readSql = "SELECT * FROM user WHERE id = ?";
-        boolean isUserNotExist = jdbcTemplate.query(readSql, (rs, rowNum) -> 0, request.getId()).isEmpty();
+    private final UserRepository userRepository;
 
-        if (isUserNotExist) {//true면
+    public UserService(JdbcTemplate jdbcTemplate) {
+        userRepository = new UserRepository(jdbcTemplate);
+    }
+
+    public void updateUser(UserUpdateRequest request) {
+//      boolean isUserNotExist = userRepository.isUserNotExist(jdbcTemplate, request.getId());
+        if (userRepository.isUserNotExist(request.getId())) {//true면
             throw new IllegalStateException();//실행-오류 뜨는 것
         }
 
-        String sql = "UPDATE user SET name = ? WHERE id = ?";
-        jdbcTemplate.update(sql, request.getName(), request.getId());
+        userRepository.updateUserName(request.getName(), request.getId());
 
     }
 }

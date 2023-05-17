@@ -17,13 +17,14 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    private final UserService userService = new UserService();
+    private final UserService userService;
 
     //    private final List<User> users = new ArrayList<>();
     private final JdbcTemplate jdbcTemplate;
 
     public UserController(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userService = new UserService(jdbcTemplate);
     }
 
     @PostMapping("/user")
@@ -53,7 +54,7 @@ public class UserController {
 
     @PutMapping("/user")
     public void updateUser(@RequestBody UserUpdateRequest request) {
-        userService.updateUser(jdbcTemplate, request);
+        userService.updateUser(request);
    }
 
     @DeleteMapping("/user")
