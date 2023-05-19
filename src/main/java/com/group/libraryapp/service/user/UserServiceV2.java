@@ -45,7 +45,7 @@ public class UserServiceV2 {
                 .orElseThrow(IllegalArgumentException::new);
 
         user.updateName(request.getName());
-        userRepository.save(user);
+//        userRepository.save(user);
     }
 
     @Transactional
