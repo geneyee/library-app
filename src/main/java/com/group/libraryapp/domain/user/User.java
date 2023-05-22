@@ -18,7 +18,7 @@ public class User {
 
     private Integer age;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
     //Entity 객체에는 매개변수가 하나도 없는 기본 생성자가 필요하다
@@ -47,6 +47,10 @@ public class User {
 
     public void updateName(String name){
         this.name = name;
+    }
+
+    public void loanBook(String bookName){
+        this.userLoanHistories.add(new UserLoanHistory(this, bookName));
     }
 
 }
