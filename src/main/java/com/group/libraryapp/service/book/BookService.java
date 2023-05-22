@@ -64,12 +64,15 @@ public class BookService {
         User user = userRepository.findByName(request.getUserName())
                 .orElseThrow(IllegalArgumentException::new);
 
+/*
         //2. 유저를 통해 대출기록 찾음
         UserLoanHistory history = userLoanHistoryRepository.findByUserIdAndBookName(user.getId(), request.getBookName())
                 .orElseThrow(IllegalArgumentException::new);
 
         //3. 책 반납하기
         history.doReturn();
+*/
+        user.returnBook(request.getBookName());
 
     }
 }
