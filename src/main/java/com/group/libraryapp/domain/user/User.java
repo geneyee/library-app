@@ -23,7 +23,8 @@ public class User {
 
     //Entity 객체에는 매개변수가 하나도 없는 기본 생성자가 필요하다
     //기본 생성자는 protected 해도 됨
-    protected User(){}
+    protected User() {
+    }
 
     public User(String name, Integer age) {
         if (name == null || name.isBlank()) {
@@ -45,15 +46,15 @@ public class User {
         return id;
     }
 
-    public void updateName(String name){
+    public void updateName(String name) {
         this.name = name;
     }
 
-    public void loanBook(String bookName){
+    public void loanBook(String bookName) {
         this.userLoanHistories.add(new UserLoanHistory(this, bookName));
     }
 
-    public void returnBook(String bookName){
+    public void returnBook(String bookName) {
         UserLoanHistory targetHistory = this.userLoanHistories.stream()
                 .filter(history -> history.getBookName().equals(bookName))
                 .findFirst()
