@@ -5,18 +5,22 @@ import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
 import com.group.libraryapp.service.user.UserServiceV1;
 import com.group.libraryapp.service.user.UserServiceV2;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 public class UserController {
 
     private final UserServiceV2 userService;
 
+/*
     public UserController(UserServiceV2 userService) {
         this.userService = userService;
     }
+*/
 
     //생성(저장)
     @PostMapping("/user")

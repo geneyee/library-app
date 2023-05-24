@@ -1,7 +1,11 @@
 package com.group.libraryapp.domain.book;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Book {
 
@@ -12,8 +16,10 @@ public class Book {
     @Column(nullable = false)
     private String name;
 
+/*
     protected Book() {
     }
+*/
 
     public Book(String name) {
         if (name == null || name.isBlank()) {

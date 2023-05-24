@@ -1,11 +1,14 @@
 package com.group.libraryapp.domain.user;
 
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED) //매개변수 없는 기본생성자
 @Entity
 public class User {
 
@@ -22,9 +25,10 @@ public class User {
     private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
     //Entity 객체에는 매개변수가 하나도 없는 기본 생성자가 필요하다
-    //기본 생성자는 protected 해도 됨
-    protected User() {
-    }
+    //기본 생성자는 protected 해도 됨/*
+    //    protected User() {
+    //    }
+    //*/
 
     public User(String name, Integer age) {
         if (name == null || name.isBlank()) {

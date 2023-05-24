@@ -10,9 +10,11 @@ import com.group.libraryapp.dto.book.request.BookCreateRequest;
 
 import com.group.libraryapp.dto.book.request.BookLoanRequest;
 import com.group.libraryapp.dto.book.request.BookReturnRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service
 public class BookService {
 
@@ -20,11 +22,13 @@ public class BookService {
     private final UserLoanHistoryRepository userLoanHistoryRepository;
     private final UserRepository userRepository;
 
+/*
     public BookService(BookRepository bookRepository, UserLoanHistoryRepository userLoanHistoryRepository, UserRepository userRepository) {
         this.bookRepository = bookRepository;
         this.userLoanHistoryRepository = userLoanHistoryRepository;
         this.userRepository = userRepository;
     }
+*/
 
     //책 저장
     @Transactional
